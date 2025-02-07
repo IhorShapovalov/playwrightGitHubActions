@@ -1,0 +1,24 @@
+{
+  "name": "PortfolioPlaywrightIS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "generate-allure-report": "allure generate allure-results -o allure-report --clean",
+    "clear-allure-reports": "npx rimraf allure-results allure-report",
+    "open-allure-report": "allure open allure-report",
+    "run-test": "playwright test tests/* --reporter=allure-playwright",
+    "test": "npm run clear-allure-reports && npm run run-test && npm run generate-allure-report && npm run open-allure-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.1",
+    "dotenv-cli": "^8.0.0",
+    "typescript": "^5.5.3"
+  },
+  "private": true,
+  "dependencies": {
+    "allure-playwright": "^3.1.0",
+    "dotenv": "^16.4.7"
+  }
+}
