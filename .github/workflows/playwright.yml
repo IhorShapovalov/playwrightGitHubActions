@@ -53,7 +53,13 @@ jobs:
           path: allure-report/
           retention-days: 90
 
-      - name: Print Allure Report URL
+      - name: Serve Allure Report Locally
         if: always()
         run: |
-             echo "📌 **Download the Allure Report**: [Click Here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          npm install -g http-server
+          npx http-server allure-report -p 5050 &
+
+      - name: Print Local Allure Report URL
+        if: always()
+        run: |
+          echo "📌 **View the Allure Report Locally**: http://127.0.0.1:5050/index.html"

@@ -1,5 +1,6 @@
-# Playwright portfolio
+# Playwright portfolio + GitHub Actions
 Sample framework structure including:
+- Implemented GitHub Actions
 - Page objects
 - Allure Reporting
 - Working with environment variables (.env)
