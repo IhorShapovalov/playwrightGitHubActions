@@ -13,7 +13,6 @@ export default defineConfig({
     retries: Number(process.env.RETRIES || 0),
     workers: process.env.CI ? 1 : Number(process.env.WORKERS || 1),
     reporter: [['allure-playwright', { outputFolder: 'allure-results', open: !process.env.CI }]],
-    ...(process.env.CI ? { reporter: [['list'], ['allure-playwright', { outputFolder: 'allure-results', open: false }]] } : {}),
     grep: process.env.GREP
         ? new RegExp(process.env.GREP.split(',').join('|'))
         : undefined,
