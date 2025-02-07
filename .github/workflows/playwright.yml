@@ -37,21 +37,13 @@ jobs:
           npm run run-test
           npm run generate-allure-report
 
-      - name: Upload Playwright report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
-
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: allure-results
           path: allure-results/
-          retention-days: 30
+          retention-days: 90
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
@@ -59,4 +51,9 @@ jobs:
         with:
           name: allure-report
           path: allure-report/
-          retention-days: 30
+          retention-days: 90
+
+      - name: Print Allure Report URL
+        if: always()
+        run: |
+             echo "📌 **Download the Allure Report**: [Click Here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})"
